@@ -1,20 +1,74 @@
 "use strict";
 
 
-/* ---------------- Contador de acessos - CounterAPI ---------------- */
-https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596
-Increment (Up)
-curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/up \
-  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
-Decrement (Down)
-curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/down \
-  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
-Get Value
-curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596 \
-  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
-Get Statistics
-curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/stats \
-  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
+<!-- Início do Contador de Acessos -->
+<div class="contador-container">
+  <div class="contador-titulo">Visitantes Universais</div>
+  <div id="contador-numero" class="contador-valor">...</div>
+</div>
+
+<style>
+  /* Estilização combinando com o tema escuro do CounterAPI */
+  .contador-container {
+    background-color: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    padding: 15px 25px;
+    display: inline-block;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+  }
+  
+  .contador-titulo {
+    color: #8b949e;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  
+  .contador-valor {
+    color: #58a6ff; /* Azul neon correspondente ao painel */
+    font-size: 32px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Configurações extraídas das suas imagens e token
+    const endpoint = "https://counterapi.dev";
+    const token = "ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB";
+
+    // Executa a chamada para registrar a visita e obter o total
+    fetch(endpoint, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro na resposta do servidor");
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Atualiza o número na tela (o CounterAPI retorna a propriedade 'count')
+      document.getElementById("contador-numero").innerText = data.count;
+    })
+    .catch(error => {
+      console.error("Erro ao carregar o contador:", error);
+      document.getElementById("contador-numero").innerText = "Erro";
+      document.getElementById("contador-numero").style.color = "#f85149"; // Vermelho se falhar
+    });
+  });
+</script>
+<!-- Fim do Contador de Acessos -->
+
 /* ---------------- Utilidades ---------------- */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
