@@ -1,5 +1,34 @@
 "use strict";
 
+
+/* ---------------- Contador de acessos - CounterAPI ---------------- */
+const COUNTERAPI_WORKSPACE = "João Lucas de Freitas's Workspace";
+const COUNTERAPI_COUNTER = "acessos-site";
+const COUNTERAPI_ACCESS_TOKEN = "ut_adtbAwP8SVvExcHR1Lr0TAWgD7n7hwaHcvWpccWt";
+let counterApiAcessoRegistrado = false;
+
+async function registrarAcessoCounterAPI() {
+  if (counterApiAcessoRegistrado) return;
+  counterApiAcessoRegistrado = true;
+
+  try {
+    if (typeof Counter === "undefined") {
+      console.warn("CounterAPI: biblioteca não carregada.");
+      return;
+    }
+
+    const counter = new Counter({
+      workspace: COUNTERAPI_WORKSPACE,
+      accessToken: COUNTERAPI_ACCESS_TOKEN
+    });
+
+    await counter.up(COUNTERAPI_COUNTER);
+  } catch (erro) {
+    // O contador não pode impedir o funcionamento do site.
+    console.warn("CounterAPI: não foi possível registrar o acesso.", erro);
+  }
+}
+
 /* ---------------- Utilidades ---------------- */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -1198,6 +1227,7 @@ const CAMPOS_JUROS = ["jInicial", "jAporte", "jTaxa", "jPeriodo", "jUnidade"];
 const CAMPOS_DE_DINHEIRO = ["sSaldo", "sMeta", "sAporte", "sExtra", "gMeta", "gSaldo", "jInicial", "jAporte"];
 
 function iniciarAplicativo() {
+  registrarAcessoCounterAPI();
   /* Tema */
   iniciarTema();
   $("#themeToggle").addEventListener("click", alternarTema);
