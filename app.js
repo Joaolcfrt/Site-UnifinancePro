@@ -6,24 +6,7 @@
   <div class="contador-titulo">Visitantes Universais</div>
   <div id="contador-numero" class="contador-valor">...</div>
 </div>
-
   
-  .contador-titulo {
-    color: #8b949e;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-  }
-  
-  .contador-valor {
-    color: #58a6ff; /* Azul neon correspondente ao painel */
-    font-size: 32px;
-    font-weight: bold;
-    font-variant-numeric: tabular-nums;
-  }
-</style>
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Configurações extraídas das suas imagens e token
