@@ -2,35 +2,19 @@
 
 
 /* ---------------- Contador de acessos - CounterAPI ---------------- */
-const COUNTERAPI_BASE_URL =
-  "https://api.counterapi.dev/v2/joao-lucas-de-freitass-team-5587/first-counter-5587";
-const COUNTERAPI_ACCESS_TOKEN = "ut_adtbAwP8SVvExcHR1Lr0TAWgD7n7hwaHcvWpccWt";
-let counterApiAcessoRegistrado = false;
-
-async function registrarAcessoCounterAPI() {
-  if (counterApiAcessoRegistrado) return;
-  counterApiAcessoRegistrado = true;
-
-  try {
-    const resposta = await fetch(`${COUNTERAPI_BASE_URL}/up`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${COUNTERAPI_ACCESS_TOKEN}`
-      },
-      cache: "no-store"
-    });
-
-    if (!resposta.ok) {
-      throw new Error(`HTTP ${resposta.status}`);
-    }
-
-    console.log("CounterAPI: acesso registrado com sucesso.");
-  } catch (erro) {
-    // O contador não pode impedir o funcionamento do site.
-    console.warn("CounterAPI: não foi possível registrar o acesso.", erro);
-  }
-}
-
+https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596
+Increment (Up)
+curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/up \
+  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
+Decrement (Down)
+curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/down \
+  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
+Get Value
+curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596 \
+  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
+Get Statistics
+curl https://api.counterapi.dev/v2/joao-lucass-team-5596/first-counter-5596/stats \
+  -H "Authorization: Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
 /* ---------------- Utilidades ---------------- */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
