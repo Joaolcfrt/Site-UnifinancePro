@@ -1,12 +1,22 @@
 "use strict";
 
-
-<!-- Início do Contador de Acessos -->
-<div class="contador-container">
-  <div class="contador-titulo">Visitantes Universais</div>
-  <div id="contador-numero" class="contador-valor">...</div>
-</div>
-  
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("https://counterapi.dev", {
+    method: "GET",
+    headers: {
+      "Authorization": "Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Procura um elemento no seu HTML com a ID "contador-numero" e coloca o total de visitas nele
+    document.getElementById("contador-numero").innerText = data.count;
+  })
+  .catch(error => {
+    console.error(error);
+  });
+});
+________
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Configurações extraídas das suas imagens e token
