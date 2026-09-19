@@ -2,8 +2,8 @@
 
 
 /* ---------------- Contador de acessos - CounterAPI ---------------- */
-const COUNTERAPI_WORKSPACE = "João Lucas de Freitas's Workspace";
-const COUNTERAPI_COUNTER = "acessos-site";
+const COUNTERAPI_BASE_URL =
+  "https://api.counterapi.dev/v2/joao-lucas-de-freitass-team-5587/first-counter-5587";
 const COUNTERAPI_ACCESS_TOKEN = "ut_adtbAwP8SVvExcHR1Lr0TAWgD7n7hwaHcvWpccWt";
 let counterApiAcessoRegistrado = false;
 
@@ -12,17 +12,19 @@ async function registrarAcessoCounterAPI() {
   counterApiAcessoRegistrado = true;
 
   try {
-    if (typeof Counter === "undefined") {
-      console.warn("CounterAPI: biblioteca não carregada.");
-      return;
-    }
-
-    const counter = new Counter({
-      workspace: COUNTERAPI_WORKSPACE,
-      accessToken: COUNTERAPI_ACCESS_TOKEN
+    const resposta = await fetch(`${COUNTERAPI_BASE_URL}/up`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${COUNTERAPI_ACCESS_TOKEN}`
+      },
+      cache: "no-store"
     });
 
-    await counter.up(COUNTERAPI_COUNTER);
+    if (!resposta.ok) {
+      throw new Error(`HTTP ${resposta.status}`);
+    }
+
+    console.log("CounterAPI: acesso registrado com sucesso.");
   } catch (erro) {
     // O contador não pode impedir o funcionamento do site.
     console.warn("CounterAPI: não foi possível registrar o acesso.", erro);
