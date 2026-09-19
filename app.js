@@ -7,19 +7,6 @@
   <div id="contador-numero" class="contador-valor">...</div>
 </div>
 
-<style>
-  /* Estilização combinando com o tema escuro do CounterAPI */
-  .contador-container {
-    background-color: #0d1117;
-    border: 1px solid #21262d;
-    border-radius: 8px;
-    padding: 15px 25px;
-    display: inline-block;
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    margin: 20px auto;
-  }
   
   .contador-titulo {
     color: #8b949e;
