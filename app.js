@@ -1,54 +1,5 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function() {
-  fetch("https://counterapi.dev", {
-    method: "GET",
-    headers: {
-      "Authorization": "Bearer ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB"
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Procura um elemento no seu HTML com a ID "contador-numero" e coloca o total de visitas nele
-    document.getElementById("contador-numero").innerText = data.count;
-  })
-  .catch(error => {
-    console.error(error);
-  });
-});
-________
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Configurações extraídas das suas imagens e token
-    const endpoint = "https://counterapi.dev";
-    const token = "ut_7OaDOgIjI5PEcM4mpLbzs0KPOZg4d771Z6RBAPfB";
-
-    // Executa a chamada para registrar a visita e obter o total
-    fetch(endpoint, {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Erro na resposta do servidor");
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Atualiza o número na tela (o CounterAPI retorna a propriedade 'count')
-      document.getElementById("contador-numero").innerText = data.count;
-    })
-    .catch(error => {
-      console.error("Erro ao carregar o contador:", error);
-      document.getElementById("contador-numero").innerText = "Erro";
-      document.getElementById("contador-numero").style.color = "#f85149"; // Vermelho se falhar
-    });
-  });
-</script>
-<!-- Fim do Contador de Acessos -->
-
 /* ---------------- Utilidades ---------------- */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -1247,7 +1198,6 @@ const CAMPOS_JUROS = ["jInicial", "jAporte", "jTaxa", "jPeriodo", "jUnidade"];
 const CAMPOS_DE_DINHEIRO = ["sSaldo", "sMeta", "sAporte", "sExtra", "gMeta", "gSaldo", "jInicial", "jAporte"];
 
 function iniciarAplicativo() {
-  registrarAcessoCounterAPI();
   /* Tema */
   iniciarTema();
   $("#themeToggle").addEventListener("click", alternarTema);
