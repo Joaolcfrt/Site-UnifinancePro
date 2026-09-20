@@ -1278,7 +1278,7 @@ function iniciarAplicativo() {
   });
 
   console.log(
-    "%c💰 FinanTrack Pro%c pronto! Tudo roda localmente no seu navegador.",
+    "%c💰 UniFinance Pro Pro%c pronto! Tudo roda localmente no seu navegador.",
     "background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;padding:4px 10px;border-radius:6px;font-weight:bold;",
     "color:#888;"
   );
