@@ -232,6 +232,53 @@
       <p class="sub">Informações sobre o projeto e as pessoas envolvidas.</p>
       <p>O <strong>UniFinance PRO</strong> é um site de teste desenvolvido apenas para <strong>estudos e aprendizado</strong>. A proposta é praticar HTML, CSS e JavaScript usando uma ferramenta simples de planejamento financeiro.</p>
       <p style="margin-top:12px;">Este projeto não substitui orientação financeira profissional e as projeções apresentadas são apenas simulações matemáticas.</p>
+
+      <h3 style="margin-top:24px;">📐 Métodos de cálculo utilizados</h3>
+      <p style="margin-top:8px;">O UniFinance PRO utiliza fórmulas financeiras para simular metas, estimar aportes mensais e projetar o crescimento do patrimônio. As taxas são tratadas como percentuais anuais e convertidas para uma taxa mensal efetiva quando necessário.</p>
+
+      <div class="stat" style="margin-top:14px;">
+        <h4>🎯 1. Calculadora de metas financeiras</h4>
+        <p>Utiliza <strong>juros compostos com aportes mensais</strong> para estimar em quantos meses o saldo alcança a meta. Quando informado, o aporte extra anual é acrescentado a cada 12 meses.</p>
+        <p style="margin-top:8px;"><strong>Taxa mensal efetiva:</strong> <code>i = (1 + r)^(1/12) - 1</code></p>
+        <p><strong>Atualização mensal:</strong> <code>saldo = saldo anterior × (1 + i) + aporte mensal</code></p>
+        <p>O aporte mensal entra depois da aplicação dos juros daquele mês. O aporte extra anual é contabilizado no fechamento de cada 12 meses.</p>
+      </div>
+
+      <div class="stat" style="margin-top:12px;">
+        <h4>✅ 2. Calculadora “Quanto preciso guardar por mês?”</h4>
+        <p>Utiliza a <strong>fórmula de uma série uniforme de pagamentos</strong>, considerando depósitos no fim de cada mês, juros compostos, saldo inicial e prazo definido.</p>
+        <p style="margin-top:8px;"><strong>Aporte mensal necessário:</strong></p>
+        <p><code>A = ((M − P × (1 + i)^n) × i) / ((1 + i)^n − 1)</code></p>
+        <p>Se a taxa de juros for zero, o cálculo passa a ser <code>A = (M − P) / n</code>.</p>
+        <p><strong>Legenda:</strong> M = meta; P = saldo inicial; i = taxa mensal efetiva; n = quantidade de meses; A = aporte mensal.</p>
+      </div>
+
+      <div class="stat" style="margin-top:12px;">
+        <h4>📈 3. Calculadora de juros compostos</h4>
+        <p>Projeta o patrimônio mês a mês, combinando o saldo inicial, a rentabilidade e os aportes periódicos.</p>
+        <p style="margin-top:8px;"><strong>Atualização mensal:</strong> <code>saldo = saldo anterior × (1 + i) + aporte mensal</code></p>
+        <p><strong>Total investido:</strong> <code>saldo inicial + (aporte mensal × número de meses)</code></p>
+        <p><strong>Juros acumulados:</strong> <code>saldo final − total investido</code></p>
+        <p><strong>Multiplicador patrimonial:</strong> <code>saldo final / total investido</code>, quando o total investido for maior que zero.</p>
+      </div>
+
+      <div class="stat" style="margin-top:12px;">
+        <h4>📋 4. Acompanhamento do planejamento</h4>
+        <p>Gera uma projeção mensal baseada na calculadora de metas, com juros compostos, aportes mensais e eventual aporte extra anual. O valor planejado de cada mês é limitado ao valor da meta.</p>
+        <p style="margin-top:8px;">O valor realizado e as observações são preenchidos pelo usuário para comparar o progresso real com o planejado; não são resultados de uma previsão automática.</p>
+      </div>
+
+      <div class="stat" style="margin-top:12px;">
+        <h4>🧮 Indicadores complementares</h4>
+        <ul style="margin:8px 0 0 20px;">
+          <li><strong>Percentual de juros:</strong> juros acumulados divididos pelo total investido, multiplicados por 100.</li>
+          <li><strong>Percentual da meta:</strong> saldo projetado dividido pela meta, multiplicado por 100.</li>
+          <li><strong>Poder de compra futuro:</strong> saldo final dividido por <code>(1 + inflação)^(meses/12)</code>, quando a inflação é informada e a meta é concluída.</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:14px;">As simulações consideram taxas constantes e não descontam automaticamente impostos, tarifas ou custos de investimento. Os resultados são estimativas matemáticas, não garantias de rentabilidade.</p>
+
       <h3 style="margin-top:24px;">👥 Equipe</h3>
       <div class="equipe-grid">
         <div class="equipe-item"><b>João Lucas</b><span>60018123</span></div>
